@@ -15,6 +15,7 @@ namespace ToDoListApplication.Controllers
         private ToDoListDBContext db = new ToDoListDBContext();
 
         // GET: Categories
+        //
         public ActionResult Index()
         {
             return View(db.Categories.ToList());
