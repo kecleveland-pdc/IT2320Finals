@@ -37,6 +37,5 @@
      * Goal: This method will return tasks that are due in the next "nbr" days from today
      * To do: Call this method when the "SearchByCategory" button is clicked.
      * Display tasks that match the category in the div with id="results3"*/
-
-   
+     
 });     
