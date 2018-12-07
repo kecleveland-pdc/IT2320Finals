@@ -1,0 +1,81 @@
+/*BODY*/
+body{
+    font-family: 'Karla', sans-serif;
+}
+
+
+/*CONTAINER*/
+#container h1{
+    text-align: center;
+    color: rgb(105, 94, 94);
+}
+/* FORM */
+#form{
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #dbe5e7;
+    padding: 20px;
+    color: rgb(99, 89, 89);
+}
+
+input[type=submit] {
+    width: 25%;
+    background-color:#4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    width: 25%;
+    background-color: #fff;
+    color: #000;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+}
+
+input[type=text], select{
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=text], select, label {
+    display: block;
+}
+
+/*RESULTS*/
+
+#results{
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+#petdiv{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1em;
+    border-radius: 5px;
+    background-color: #e6eaec;
+    padding: 20px;
+    color: rgb(99, 89, 89);
+}
+
+.shadow{
+    -webkit-box-shadow: 0 10px 6px -6px rgb(105, 94, 94);
+	-moz-box-shadow: 0 10px 6px -6px rgb(105, 94, 94);
+	box-shadow: 0 10px 6px -6px rgb(105, 94, 94);
+}
+
+
