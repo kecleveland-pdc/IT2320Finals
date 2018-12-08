@@ -19,6 +19,29 @@ body{
     color: rgb(99, 89, 89);
 }
 
+/* BUTTONS */
+
+.getPets{
+    width: 25%;
+    background-color:#4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.getPets:hover{
+    width: 25%;
+    background-color: #fff;
+    color: #000;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+}
+
 input[type=submit] {
     width: 25%;
     background-color:#4CAF50;
