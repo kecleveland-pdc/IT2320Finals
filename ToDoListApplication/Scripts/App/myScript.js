@@ -11,13 +11,14 @@
      * Display expired tasks in the div with id="results"*/
 
     $("#ExpiredTasks").click(function (e) {
-
         var url = "/Tasks/ExpiredTasks";
         $.get(url, function (data) {
             console.log(data);
+            $("#results").html("");
+
             $.each(data, function (i, item) {
                // var para = $("<p></p>").text(item.Id + " " + item.Title + " " + item.Year);
-            var para = $("<p></p>").text(item.Id + " " + item.Title);
+                var para = $("<p></p>").text(item.Id + " " + item.Title);
                 $("#results").append(para);
             });
         });//ajax  
@@ -33,8 +34,9 @@
      * Display "count" and "status" in the div with id="results"*/
 
     $("#DeleteExpiredTasks").click(function (e) {
-
         var url = "/Tasks/DeleteExpiredTasks";
+        $("#results").html("");
+
         $.post(url, function (data) {
             console.log(data);
             var para = $("<p></p>").text(data.count + " " + data.status);
@@ -53,12 +55,15 @@
 
     $("#UrgentTasks").click(function (e) {
 
+        var numberOfDays = $("#NbrOfDays").val();
+        console.log(numberOfDays);
         var url = "/Tasks/UrgentTasks";
-        var numberOfDays = $("NbrOfDays").Val();
-        $.get(url, function (data) {
-            console.log(data);
-            $.each(data, { "nbr": numberOfDays }, function (i, item) {
-                var para = $("<p></p>").text(item.Id + " " + item.Title + " " + item.DueDate);
+        $("#results2").html("");
+
+        $.get(url, { "nbr": numberOfDays }, function (data) {
+            console.log(data)
+            $.each(data, function (i, item) {
+                var para = $("<p></p>").text(item.Id + " " + item.Title);
                 $("#results2").append(para);
             });
         });//ajax  
@@ -75,12 +80,14 @@
 
     $("#SearchByCategory").click(function (e) {
 
+      
+        var search = $("#Search").val();
         var url = "/Tasks/SearchByCategory";
-        var numberOfDays = $("searchstring").Val();
-        $.get(url, function (data) {
-            console.log(data);
-            $.each(data, { "nbr": searchstring }, function (i, item) {
-                var para = $("<p></p>").text(item.Id + " " + item.Title + " " + item.DueDate);
+        $("#results").html("");
+
+        $.get(url, { "searchstring": search }, function (data) {
+            $.each(data, function (i, item) {
+                var para = $("<p></p>").text(item.Id + " " + item.Title);
                 $("#results3").append(para);
             });
         });//ajax  
