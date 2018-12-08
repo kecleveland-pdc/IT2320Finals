@@ -69,11 +69,10 @@ $(function(){
     
     $(document).on('click', "button", (function(e){
       e.preventDefault();
-      console.log("clicked");
+      console.log(e.target.id);
+      var shelterID = e.target.id;
       const key = "7ca41b0ec396887de2e110e7a3c60b80"; 
-     // console.log($(this.id));
-     /// var shelterID = $(this.id);
-      var url = "http://api.petfinder.com/shelter.find?callback=?&format=json&key="+key+"&callback=?&ID="+shelterID+"&_=&format=json";
+      var url = "http://api.petfinder.com/shelter.getPets?callback=?&format=json&key="+key+"&callback=?&id="+shelterID+"&_=&format=json";
       console.log(url);
      $.ajax({
          url: url,           
@@ -83,16 +82,19 @@ $(function(){
          crossDomain: true,                 
          success: function(data){              
             var div = $("<div id='result-div'><div>")
-            $.each(data.petfinder.shelters.shelter,function(i,shelter){ 
-              var petdiv = $("<div id='petdiv' class='shadow'>DIV</div>")
-             // var shelterName = $("<p></p>").append("<strong>Shelter Name: </strong>" + shelter.name.$t);
-             // var shelterID =  $("<p></p>").append("<strong>ID:</strong> " + shelter.id.$t);
-             // $(petdiv).append(shelterName);
-             // $(petdiv).append(shelterID);
+            $.each(data.petfinder.pets.pet,function(i,pet){ 
+              var petdiv = $("<div id='petdiv' class='shadow'></div>")
+              var shelter = $("<p></p>").append("<strong> Shelter ID: " + shelterID + "<strong>");
+              var p = $("<p></p>").append("<strong>Name: </strong>" + pet.name.$t + " <strong>Pet ID:</strong> " + pet.id.$t);
+              var contact = $('<p></p>').append("<strong>Contact:</strong> " + pet.contact.phone.$t);
+              var description = $('<p></p>').append(pet.description.$t);
+              $(petdiv).append(shelter);
+              $(petdiv).append(p);
+              $(petdiv).append(contact);
+              $(petdiv).append(description);
               $(div).append(petdiv);
-              $(div).append(button);
             });
-            $("#results").html(div);          
+            $("#results").html(div);                 
           }   
        });//ajax  
   }));  //btn click
