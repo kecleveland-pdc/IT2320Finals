@@ -54,9 +54,9 @@ $(function(){
            success: function(data){              
               var div = $("<div id='result-div'><div>")
               $.each(data.petfinder.shelters.shelter,function(i,shelter){ 
-                var petdiv = $("<div id='petdiv' class='shadow'></div>")
+                var petdiv = $("<div id='petdiv' class='shadow'><button id='" + shelter.id.$t + "' class='.button getPets'>Get Pets</button></div>")
                 var shelterName = $("<p></p>").append("<strong>Shelter Name: </strong>" + shelter.name.$t);
-                var shelterID =  $("<p id = " + shelter.id.$t + "></p>").append("<strong>ID:</strong> " + shelter.id.$t);
+                var shelterID =  $("<p></p>").append("<strong>ID:</strong> " + shelter.id.$t);
                 $(petdiv).append(shelterName);
                 $(petdiv).append(shelterID);
                 $(div).append(petdiv);
@@ -65,4 +65,35 @@ $(function(){
             }   
          });//ajax  
     });  //btn click
+
+    
+    $(document).on('click', "button", (function(e){
+      e.preventDefault();
+      console.log("clicked");
+      const key = "7ca41b0ec396887de2e110e7a3c60b80"; 
+     // console.log($(this.id));
+     /// var shelterID = $(this.id);
+      var url = "http://api.petfinder.com/shelter.find?callback=?&format=json&key="+key+"&callback=?&ID="+shelterID+"&_=&format=json";
+      console.log(url);
+     $.ajax({
+         url: url,           
+         type: "GET", 
+         dataType: "jsonp",      
+         contentType: "application/json; charset=utf-8",
+         crossDomain: true,                 
+         success: function(data){              
+            var div = $("<div id='result-div'><div>")
+            $.each(data.petfinder.shelters.shelter,function(i,shelter){ 
+              var petdiv = $("<div id='petdiv' class='shadow'>DIV</div>")
+             // var shelterName = $("<p></p>").append("<strong>Shelter Name: </strong>" + shelter.name.$t);
+             // var shelterID =  $("<p></p>").append("<strong>ID:</strong> " + shelter.id.$t);
+             // $(petdiv).append(shelterName);
+             // $(petdiv).append(shelterID);
+              $(div).append(petdiv);
+              $(div).append(button);
+            });
+            $("#results").html(div);          
+          }   
+       });//ajax  
+  }));  //btn click
 });//end jquery
