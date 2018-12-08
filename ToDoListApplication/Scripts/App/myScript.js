@@ -13,7 +13,6 @@
     $("#ExpiredTasks").click(function (e) {
         var url = "/Tasks/ExpiredTasks";
         $.get(url, function (data) {
-            console.log(data);
             $("#results").html("");
 
             $.each(data, function (i, item) {
@@ -38,9 +37,8 @@
         $("#results").html("");
 
         $.post(url, function (data) {
-            console.log(data);
-            var para = $("<p></p>").text(data.count + " " + data.status);
-             $("#results").append(para);
+            var para = $("<p></p>").text("Count: " + data.count + " Status: " + data.status);
+            $("#results").append(para);
         }); //ajax
     }); //btn click
      
@@ -56,12 +54,10 @@
     $("#UrgentTasks").click(function (e) {
 
         var numberOfDays = $("#NbrOfDays").val();
-        console.log(numberOfDays);
         var url = "/Tasks/UrgentTasks";
         $("#results2").html("");
 
         $.get(url, { "nbr": numberOfDays }, function (data) {
-            console.log(data)
             $.each(data, function (i, item) {
                 var para = $("<p></p>").text(item.Id + " " + item.Title);
                 $("#results2").append(para);
@@ -92,5 +88,4 @@
             });
         });//ajax  
     }); //btn click
-     
 });     
